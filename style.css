@@ -128,7 +128,7 @@ a:hover {
     .name {
         font-size: 18px; /* Adjust the header name size */
     }
-    
+
     .side-by-side-container {
         flex-direction: column;
         width: 100%; /* Ensure full width */
@@ -148,5 +148,13 @@ a:hover {
     /* Adjust padding for smaller screens */
     .container {
         padding: 10px;
+    }
+
+    img {
+        width: 200px;  /* Set exact width */
+        /* Or you can use: */
+        /* max-width: 200px; */
+        /* max-height: 250px; */
+        /* object-fit: cover; /* This preserves aspect ratio and crops if needed */
     }
 }
