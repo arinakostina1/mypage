@@ -6,12 +6,12 @@
     font-size: 5px; 
     line-height: 5px;
     letter-spacing: 0;
+    width: 100%;
+    text-align: center;
 }
 video { 
     display: none; 
 }
-
-/* monospace */
 
 /* Add this to your existing CSS */
 * {
@@ -47,6 +47,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px; /* Add padding inside instead of overflow */
+    min-height: 55px; /* Ensure header has a minimum height */
 }
 
 header {
@@ -72,7 +73,6 @@ nav2 {
     text-align: center;
     margin-left: auto;
 }
-
 
 nav a {
     margin-left: 5px;
@@ -108,8 +108,41 @@ a:hover {
     text-decoration: underline;
 }
 
+/* PROFILE SECTION LAYOUT */
+.profile-section {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
 
+.image-container {
+    flex-shrink: 0;
+}
 
+.profile-info {
+    flex: 1;
+    line-height: 1.6;
+}
+
+/* MINIMALISTIC EXPERIENCE SECTION */
+.experience-item {
+    margin-bottom: 35px;
+}
+
+.experience-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.experience-description {
+    margin-left: 20px;
+    margin-top: 10px;
+    line-height: 1.6;
+    color: #666;
+}
 
 .side-by-side-container {
     display: flex;
@@ -120,13 +153,25 @@ a:hover {
 
 /* Make sure media query handles width properly */
 @media (max-width: 799px) {
-
     body {
         font-size: 15px; /* Smaller font size for mobile */
     }
-    
+
     .name {
-        font-size: 18px; /* Adjust the header name size */
+        font-size: 18px;
+    }
+
+    nav2 {
+        order: 2;
+    }
+
+    nav {
+        order: 3;
+    }
+
+    .ascii-container {
+        width: 150px;
+        height: 25px;
     }
 
     .side-by-side-container {
@@ -150,11 +195,18 @@ a:hover {
         padding: 10px;
     }
 
-    img {
-        width: 200px;  /* Set exact width */
-        /* Or you can use: */
-        /* max-width: 200px; */
-        /* max-height: 250px; */
-        /* object-fit: cover; /* This preserves aspect ratio and crops if needed */
+    /* Mobile adjustments for profile section */
+    .profile-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .image-container img {
+        width: 200px;
+    }
+
+    /* Mobile adjustments for experience section */
+    .experience-description {
+        margin-left: 15px;
     }
 }

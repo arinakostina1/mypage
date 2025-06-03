@@ -5,7 +5,7 @@ const asciiPalette2 = "  ===#";
 const asciiPalette3 = "@%#*+=-:.  ";
 
 // Canvas width (smaller for better performance)
-const CANVAS_WIDTH = 220;
+const CANVAS_WIDTH = 190;
 
 // Store references to elements and parameters for reinitialization
 const videoConfigs = {
