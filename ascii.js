@@ -44,7 +44,7 @@ video1.load();
 video4.load();
 
 // Process video frame to ASCII with configurable ASCII characters
-function processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, centerRowPercentage = 100, centerColumnPercentage = 100, canvas_width) {
+function processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, centerRowPercentage = 100, centerColumnPercentage = 100, canvas_width) { 
     // Check if processing should continue
     if (!processingActive) {
         return;
