@@ -4,9 +4,6 @@ const asciiPalette2 = "  ===#";
 // const asciiPalette2 = " .:-=+*#%@";
 const asciiPalette3 = "@%#*+=-:.  ";
 
-// Canvas width (smaller for better performance)
-const CANVAS_WIDTH = 190;
-
 // Store references to elements and parameters for reinitialization
 const videoConfigs = {
     "video1": { selector: "video1", outputSelector: "ascii1", palette: asciiPalette1, rowPercent: 80, colPercent: 70 },
@@ -47,7 +44,7 @@ video1.load();
 video4.load();
 
 // Process video frame to ASCII with configurable ASCII characters
-function processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, centerRowPercentage = 100, centerColumnPercentage = 100) {
+function processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, centerRowPercentage = 100, centerColumnPercentage = 100, canvas_width = 190) {
     // Check if processing should continue
     if (!processingActive) {
         return;
@@ -55,14 +52,14 @@ function processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, center
     
     // Check if video and elements are available
     if (!video || !asciiOutput || !canvas || !ctx || video.paused || video.ended) {
-        requestAnimationFrame(() => processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, centerRowPercentage, centerColumnPercentage));
+        requestAnimationFrame(() => processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, centerRowPercentage, centerColumnPercentage, canvas_width));
         return;
     }
     
     try {
         // Set canvas dimensions
-        const height = Math.floor((video.videoHeight / video.videoWidth) * CANVAS_WIDTH / 1.8);
-        canvas.width = CANVAS_WIDTH;
+        const height = Math.floor((video.videoHeight / video.videoWidth) * canvas_width / 1.8);
+        canvas.width = canvas_width;
         canvas.height = height;
         
         // Draw video to canvas
@@ -120,7 +117,7 @@ function processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, center
     }
     
     // Continue animation with the same percentage parameters
-    requestAnimationFrame(() => processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, centerRowPercentage, centerColumnPercentage));
+    requestAnimationFrame(() => processVideoToAscii(video, asciiOutput, canvas, ctx, asciiChars, centerRowPercentage, centerColumnPercentage, canvas_width));
 }
 
 // Function to reinitialize video processing
@@ -183,11 +180,11 @@ document.addEventListener('visibilitychange', function() {
 video1.addEventListener("loadeddata", () => {
     console.log("Video 1 loaded");
     video1.play();
-    processVideoToAscii(video1, ascii1, canvas1, ctx1, asciiPalette1, 80, 70);
+    processVideoToAscii(video1, ascii1, canvas1, ctx1, asciiPalette1, 80, 70, 260);
 });
 
 video4.addEventListener("loadeddata", () => {
     console.log("Video 4 loaded");
     video4.play();
-    processVideoToAscii(video4, ascii4, canvas4, ctx4, asciiPalette2, 20, 80);
+    processVideoToAscii(video4, ascii4, canvas4, ctx4, asciiPalette2, 20, 80, 190);
 });
